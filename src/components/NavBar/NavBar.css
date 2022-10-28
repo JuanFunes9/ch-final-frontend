@@ -1,0 +1,14 @@
+
+#svg-logo {
+    max-width: 170px;
+    max-height: 150px;
+    margin-top: 6px;
+}
+
+#svg-logo:hover{
+    cursor: pointer;
+}
+
+.menu-icon-nav:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,5 @@
+green (outlines) = #05d305
+
+ligth grey lines = #c2c0c0
+light grey (bg) = #494949
+dark grey (bg) = #272727
