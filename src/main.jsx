@@ -1,13 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './index.css'
-
+import {UserProvider} from './context/UserProvider';
 // ================ Components ================ //
-import { Index } from './components/Index/Index';
-import NavBar from './components/NavBar/NavBar'
-import Tabs from './components/Tabs/Tabs'
+import App from './components/App/App'
 
 // ================ Setting Dark Mode ================ //
 const darkTheme = createTheme({
@@ -17,14 +14,13 @@ const darkTheme = createTheme({
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<BrowserRouter>
-		<ThemeProvider theme={darkTheme}>
-			<NavBar />
-			<Routes>
-				<Route path='/' element={ <Index /> } />
-				<Route path='/products' element={ <Tabs /> } />
-				<Route path='/products/get-by-id/:id' element={ <Tabs /> } />
-			</Routes>
-		</ThemeProvider>
-	</BrowserRouter>
+	<React.StrictMode>
+		<BrowserRouter>
+			<ThemeProvider theme={darkTheme}>
+				<UserProvider>
+					<App />
+				</UserProvider>
+			</ThemeProvider>
+		</BrowserRouter>
+	</React.StrictMode>
 )

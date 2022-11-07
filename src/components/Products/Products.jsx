@@ -1,7 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
+
+// ==================== Material UI ==================== //
+import { Stack, CircularProgress, Pagination, PaginationItem } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+
 
 export const Products = ({ products }) => {
 
@@ -21,23 +27,24 @@ export const Products = ({ products }) => {
 					(ready) ?
 						products.map(prod => {
 							return (
-								<div
-									className="prod-item-container"
-									key={prod._id}
-									onClick={() => { location.href = `/products/get-by-id/${prod._id}` }}
-								>
-									<div className="prod-item-img-container">
-										<img src={prod.image} alt="img" />
-									</div>
-									<div className="prod-item-desc-container">
-										<div className="prod-item-desc-container-title">
-											<h3>{prod.title}</h3>
+								<Link to={`/products/get-by-id/${prod._id}`} key={prod._id}>
+									<div
+										className="prod-item-container"
+										key={prod._id}
+									>
+										<div className="prod-item-img-container">
+											<img src={prod.image} alt="img" />
 										</div>
-										<div className="prod-item-desc-container-price">
-											<h4>$ {prod.price}</h4>
+										<div className="prod-item-desc-container">
+											<div className="prod-item-desc-container-title">
+												<h3>{prod.title}</h3>
+											</div>
+											<div className="prod-item-desc-container-price">
+												<h4>$ {prod.price}</h4>
+											</div>
 										</div>
 									</div>
-								</div>
+								</Link>
 							)
 						}) :
 						<div className='loading-container'>

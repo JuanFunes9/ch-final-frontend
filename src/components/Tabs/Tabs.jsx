@@ -7,25 +7,32 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 // ================ Services ================ //
 import getProducts from '../../services/products/getProducts';
 
 // ================ Components ================ //
 import { Products } from '../Products/Products';
 
-const Tabs = () => {
+// ==================== Material UI ==================== //
+import { Stack, CircularProgress, Pagination, PaginationItem } from '@mui/material';
+import Typography from '@mui/material/Typography';
+
+
+const TabsNav = () => {
 
   const [categorie, setCategorie] = useState('');
   const [sort, setSort] = useState('')
   const [products, setProducts] = useState([]);
+  const [maxPages, setMaxPages] = useState(0);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getProducts(categorie)
-      .then(prods => setProducts(prods));
-  }, [categorie])
-
-  console.log(sort)
+    getProducts(categorie, page, sort)
+      .then(data => {
+        setProducts(data.products)
+        setMaxPages(data.maxPages)
+      });
+  }, [categorie, sort, page])
 
   const categories = [
     {
@@ -65,6 +72,18 @@ const Tabs = () => {
       key: 'accesorios'
     }
   ];
+
+  function PaginationControlled() {
+    const handleChangePage = (event, value) => {
+      setPage(value);
+    };
+
+    return (
+      <Stack spacing={2} sx={{mt: 3}}>
+        <Pagination count={maxPages} page={page} onChange={handleChangePage} />
+      </Stack>
+    );
+  }
 
   return (
     <>
@@ -109,6 +128,7 @@ const Tabs = () => {
                 </Select>
               </FormControl>
             </Box>
+            <PaginationControlled />
           </div>
         </div>
         <Products products={products} />
@@ -117,4 +137,4 @@ const Tabs = () => {
   )
 }
 
-export default Tabs
+export default TabsNav

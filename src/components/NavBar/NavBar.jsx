@@ -1,32 +1,44 @@
 import * as React from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+// ======================= CSS ======================= //
 import './NavBar.css'
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+
+// ======================= Material UI ======================= //
+import { AppBar, Box, Toolbar, IconButton, Typography, Badge, Button, MenuItem, Menu, Tooltip, Avatar } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-
+// ======================= import Components/ Hooks ======================= //
 import TemporaryDrawer from './ToggleMenu';
+import { UserContext } from '../../context/UserContext';
+
+// ======================= Services ======================= //
+
+
 
 const NavBar = () => {
-	const [anchorEl, setAnchorEl] = React.useState(null);
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = useState(null);
+	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+	const [anchorElUser, setAnchorElUser] = useState(null);
+	const navigate = useNavigate();
+
+	const { user, setUser, setToken } = useContext(UserContext);
+
+
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-	const handleProfileMenuOpen = (event) => {
-		setAnchorEl(event.currentTarget);
+	const handleOpenUserMenu = (event) => {
+		setAnchorElUser(event.currentTarget);
+	};
+
+	const handleCloseUserMenu = () => {
+		setAnchorElUser(null);
 	};
 
 	const handleMobileMenuClose = () => {
@@ -41,6 +53,14 @@ const NavBar = () => {
 	const handleMobileMenuOpen = (event) => {
 		setMobileMoreAnchorEl(event.currentTarget);
 	};
+
+	const handleLogout = () => {
+		setUser(null);
+		setToken(null);
+		window.sessionStorage.removeItem('jwt');
+		window.sessionStorage.removeItem('user');
+		navigate('/auth/login');
+	}
 
 	const menuId = 'primary-search-account-menu';
 	const renderMenu = (
@@ -101,22 +121,10 @@ const NavBar = () => {
 				</IconButton>
 				<p>Notifications</p>
 			</MenuItem>
-			<MenuItem onClick={handleProfileMenuOpen}>
-				<IconButton
-					size="large"
-					aria-label="account of current user"
-					aria-controls="primary-search-account-menu"
-					aria-haspopup="true"
-					color="inherit"
-				>
-					<AccountCircle />
-				</IconButton>
-				<p>Profile</p>
-			</MenuItem>
 		</Menu>
 	);
 
-	const pages = ['products', 'chat'];
+	const pages = [{ name: 'Productos', key: 'products' }, { name: 'Chat', key: 'chat' }];
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
@@ -133,57 +141,97 @@ const NavBar = () => {
 							src='https://cdn.worldvectorlogo.com/logos/opencart.svg'
 							alt='img'
 							id='svg-logo'
-							onClick={ () => { location.href = `/` } }
+							onClick={() => { location.href = `/products` }}
 						/>
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, ml: 3 }}>
 						{pages.map((page) => (
-							<Button
-								key={page}
+							<Link
+								key={page.key}
 								sx={{ my: 2, color: 'white', display: 'block' }}
-								onClick={ () => { location.href = `/${page}` } }
+								to={`/${page.key}`}
 							>
-								{page}
-							</Button>
+								<Button variant="plain">{page.name}</Button>
+							</Link>
 						))}
 					</Box>
 					<Box sx={{ flexGrow: 1 }} />
-					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-						<IconButton size="large" aria-label="show 4 new mails" color="inherit">
-							<Badge badgeContent={0} color="error">
-								<MailIcon />
-							</Badge>
-						</IconButton>
-						<IconButton
-							size="large"
-							aria-label="show 17 new notifications"
-							color="inherit"
-						>
-							<Badge badgeContent={0} color="error">
-								<NotificationsIcon />
-							</Badge>
-						</IconButton>
-						<IconButton
-							size="large"
-							aria-label="show 17 new notifications"
-							color="inherit"
-						>
-							<Badge badgeContent={0} color="error">
-								<ShoppingCartIcon />
-							</Badge>
-						</IconButton>
-						<IconButton
-							size="large"
-							edge="end"
-							aria-label="account of current user"
-							aria-controls={menuId}
-							aria-haspopup="true"
-							onClick={handleProfileMenuOpen}
-							color="inherit"
-						>
-							<AccountCircle />
-						</IconButton>
-					</Box>
+					{
+						(user)
+							?
+							<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+								<IconButton size="large" color="inherit">
+									<Link to={'/chat'}>
+										<Badge badgeContent={0} color="error">
+											<MailIcon />
+										</Badge>
+									</Link>
+								</IconButton>
+								<IconButton
+									size="large"
+									color="inherit"
+								>
+									<Link to={'/cart'}>
+										<Badge badgeContent={0} color="error">
+											<ShoppingCartIcon />
+										</Badge>
+									</Link>
+								</IconButton>
+								<Box sx={{ flexGrow: 0 }}>
+									<Tooltip title="Open settings">
+										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+											<Avatar alt="Remy Sharp" src={user.image} sx={{ width: 50, height: 50, mt: 1 }} />
+										</IconButton>
+									</Tooltip>
+									<Menu
+										sx={{ mt: '45px' }}
+										id="menu-appbar"
+										anchorEl={anchorElUser}
+										anchorOrigin={{
+											vertical: 'top',
+											horizontal: 'right',
+										}}
+										keepMounted
+										transformOrigin={{
+											vertical: 'top',
+											horizontal: 'right',
+										}}
+										open={Boolean(anchorElUser)}
+										onClose={handleCloseUserMenu}
+									>
+										<MenuItem onClick={handleCloseUserMenu}>
+											<Link to={`/profile`}>Perfil</Link>
+										</MenuItem>
+										<MenuItem onClick={handleCloseUserMenu}>
+											<Button onClick={handleLogout}>Salir</Button>
+										</MenuItem>
+									</Menu>
+								</Box>
+								{
+									(user.role === 'ADMIN_ROLE')
+									?
+									<Button
+										variant='outlined'
+										color="secondary"
+										sx={{padding: 0, ml: 2}}
+									>
+										ADMIN SESSION
+									</Button>
+									:
+									false
+								}
+							</Box>
+							:
+							<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+								<Link to={`/auth/login`}>
+									<Button size="lg" variant="outlined" sx={{ ml: 1 }}>Ingresar</Button>
+								</Link>
+								<Link to={`/auth/register`}>
+									<Button size="lg" variant="outlined" sx={{ ml: 1 }}>Registrarse</Button>
+								</Link>
+							</Box>
+					}
+
 					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size="large"
@@ -200,7 +248,7 @@ const NavBar = () => {
 			</AppBar>
 			{renderMobileMenu}
 			{renderMenu}
-		</Box>
+		</Box >
 	);
 }
 

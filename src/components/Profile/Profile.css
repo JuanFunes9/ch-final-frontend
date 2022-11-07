@@ -1,0 +1,109 @@
+.profile-main-container {
+    width: 100vw;
+    height: 89.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-child-container{
+    width: 80%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 1.2fr 3fr;
+}
+
+.profile-left-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ============================ PROFILE IMG ============================ */
+
+.profile-img-container {
+    min-width: 20vw;
+    max-width: 20vw;
+    min-height: 38vh;
+    max-height: 38vh;
+    outline: 1px solid #c2c0c0;
+    margin-bottom: 1vh;
+    margin-top: 5vh;
+    position: relative;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.profile-img-container img{
+    position: relative;
+    user-select: none;
+    z-index: 10;
+    cursor: default;
+}
+
+.profile-img-cover{
+    position: absolute;
+    background-color: rgba(14, 14, 14, 0.8);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 20;
+    transition: all .15s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c2c0c0;
+}
+
+.profile-img-cover:hover{
+    opacity: 1;
+}
+
+/* ============================ PROFILE NAME ============================ */
+
+.profile-name-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    background-color: #c2c0c0;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: .8em;
+}
+
+.firstName-container{
+    margin-right: .5vw;
+}
+
+.profile-right-container{
+    outline: 1px solid #c2c0c0;
+    border-radius: 4px;
+}
+
+.info-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #f0efef;
+}
+
+.info-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.info-item span{
+    margin-right: .5vw;
+}
+
+.clave{
+    display: flex;
+}
