@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getProductById = async(id) => {
     try {
-        const { data } = await axios.get(`http://localhost:3000/products/get-by-id/${id}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/products/get-by-id/${id}`);
 
         if(data.error){
             return {}
@@ -10,7 +10,7 @@ const getProductById = async(id) => {
 
         return data.product;
     } catch (error) {
-        console.log(`Error al realizar la peticion: GET: http://localhost:3000/products/get-by-id/${id}`);
+        console.log(`Error al realizar la peticion: GET: ${import.meta.env.VITE_API_BASE_URL}/products/get-by-id/${id}`);
     }
 }
 

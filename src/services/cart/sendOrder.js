@@ -3,7 +3,7 @@ import axios from "axios";
 const sendOrder = async (token) => {
     try {
         const { data } = await axios.post(
-            `http://localhost:3000/cart/send-order`,
+            `${import.meta.env.VITE_API_BASE_URL}/cart/send-order`,
             {},
             {
                 headers: {
@@ -12,7 +12,7 @@ const sendOrder = async (token) => {
             });
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: POST: http://localhost:3000/cart/send-order` + error);
+        console.log(`Error al realizar la peticion: POST: ${import.meta.env.VITE_API_BASE_URL}/cart/send-order` + error);
     }
 }
 

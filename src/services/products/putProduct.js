@@ -3,7 +3,7 @@ import axios from 'axios';
 const putProduct = async(product_id, token, body) => {
     try {
         const { data } = await axios.put(
-            `http://localhost:3000/products/${product_id}`,
+            `${import.meta.env.VITE_API_BASE_URL}/products/${product_id}`,
             body,
             {
                 headers: {
@@ -13,7 +13,7 @@ const putProduct = async(product_id, token, body) => {
             );
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: PUT: http://localhost:3000/products/${product_id}`);
+        console.log(`Error al realizar la peticion: PUT: ${import.meta.env.VITE_API_BASE_URL}/products/${product_id}`);
     }
 }
 

@@ -1,13 +1,14 @@
 import axios from 'axios';
 
 const getProducts = async(categorie = '', page= '', sort = '') => {
+    console.log(import.meta.env.VITE_API_BASE_URL)
     try {
         const { data } = await axios.get(
-            `http://localhost:3000/products/${categorie}?page=${page}&sort=${sort}`
+            `${import.meta.env.VITE_API_BASE_URL}/products/${categorie}?page=${page}&sort=${sort}`
             );
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: GET: http://localhost:3000/products/${categorie}`);
+        console.log(`Error al realizar la peticion: GET: ${import.meta.env.VITE_API_BASE_URL}/products/${categorie}`);
     }
 }
 

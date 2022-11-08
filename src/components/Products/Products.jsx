@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 
 // ==================== Material UI ==================== //
-import { Stack, CircularProgress, Pagination, PaginationItem } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Stack, CircularProgress } from '@mui/material';
 
 
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 const whoami = async (jwt) => {
     try {
         const { data } = await axios.get(
-            `http://localhost:3000/auth/whoami`,
+            `${import.meta.env.VITE_API_BASE_URL}/auth/whoami`,
             {
                 headers: {
                     Authorization: `Bearer ${jwt}`

@@ -3,7 +3,7 @@ import axios from 'axios';
 const login = async ({ email, password }) => {
     try {
         const { data } = await axios.post(
-            `http://localhost:3000/auth/login`,
+            `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
             { email, password }
         );
 
@@ -13,7 +13,7 @@ const login = async ({ email, password }) => {
 
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: POST: localhost:3000/auth/login`);
+        console.log(`Error al realizar la peticion: POST: ${import.meta.env.VITE_API_BASE_URL}/auth/login`);
     }
 }
 

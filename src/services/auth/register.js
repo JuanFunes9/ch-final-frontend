@@ -3,13 +3,13 @@ import axios from 'axios';
 const register = async ({ firstName, lastName, email, password, address, phone }) => {
     try {
         const { data } = await axios.post(
-            `http://localhost:3000/auth/register`,
+            `${import.meta.env.VITE_API_BASE_URL}/auth/register`,
             { firstName, lastName, email, password, address, phone }
         );
 
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: POST: localhost:3000/auth/register`, error);
+        console.log(`Error al realizar la peticion: POST: ${import.meta.env.VITE_API_BASE_URL}/auth/register`, error);
         return false;
     }
 }

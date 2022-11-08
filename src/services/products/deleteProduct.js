@@ -3,7 +3,7 @@ import axios from 'axios';
 const deleteProduct = async(product_id, token) => {
     try {
         const { data } = await axios.delete(
-            `http://localhost:3000/products/${product_id}`,
+            `${import.meta.env.VITE_API_BASE_URL}/products/${product_id}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -12,7 +12,7 @@ const deleteProduct = async(product_id, token) => {
             );
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: DELETE: http://localhost:3000/products/${product_id}`);
+        console.log(`Error al realizar la peticion: DELETE: ${import.meta.env.VITE_API_BASE_URL}/products/${product_id}`);
     }
 }
 

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getUserCart = async (token) => {
     try {
-        const { data } = await axios.get(`http://localhost:3000/cart/`,
+        const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/cart/`,
         {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -10,7 +10,7 @@ const getUserCart = async (token) => {
         });
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: GET: http://localhost:3000/cart/`);
+        console.log(`Error al realizar la peticion: GET: ${import.meta.env.VITE_API_BASE_URL}/cart/`);
     }
 }
 

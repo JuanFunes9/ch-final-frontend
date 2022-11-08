@@ -3,7 +3,7 @@ import axios from "axios";
 const getOrdersByUser = async (token) => {
     try {
         const { data } = await axios.get(
-            `http://localhost:3000/orders`,
+            `${import.meta.env.VITE_API_BASE_URL}/orders`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -11,7 +11,7 @@ const getOrdersByUser = async (token) => {
             });
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: POST: http://localhost:3000/orders` + error);
+        console.log(`Error al realizar la peticion: POST: ${import.meta.env.VITE_API_BASE_URL}/orders` + error);
     }
 }
 

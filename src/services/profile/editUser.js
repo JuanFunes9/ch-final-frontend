@@ -3,7 +3,7 @@ import axios from 'axios';
 const editUser = async( uid, token, body) => {
     try {
         const { data } = await axios.put(
-            `http://localhost:3000/users/${uid}`,
+            `${import.meta.env.VITE_API_BASE_URL}/users/${uid}`,
             body,
             {
                 headers: {
@@ -12,7 +12,7 @@ const editUser = async( uid, token, body) => {
             });
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: PUT: http://localhost:3000/users/635fb077c2135a1c4d2445de`);
+        console.log(`Error al realizar la peticion: PUT: ${import.meta.env.VITE_API_BASE_URL}/users/635fb077c2135a1c4d2445de`);
     }
 }
 

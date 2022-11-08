@@ -3,7 +3,7 @@ import axios from 'axios';
 const uploadProductImage = async( f, token) => {
     try {
         const { data } = await axios.post(
-            `http://localhost:3000/products/upload-img`,
+            `${import.meta.env.VITE_API_BASE_URL}/products/upload-img`,
             f,
             {
                 headers: {
@@ -12,7 +12,7 @@ const uploadProductImage = async( f, token) => {
             });
         return data;
     } catch (error) {
-        console.log(`Error al realizar la peticion: POST: http://localhost:3000/products/upload-img`);
+        console.log(`Error al realizar la peticion: POST: ${import.meta.env.VITE_API_BASE_URL}/products/upload-img`);
     }
 }
 
