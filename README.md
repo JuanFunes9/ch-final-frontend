@@ -52,3 +52,7 @@ npm run dev
 ![changeUserPhoto2](/readmeImages/changeUserPhoto2.png)
 
 ![changeUserPhoto3](/readmeImages/changeUserPhoto3.png)
+
+![changeUserName](/readmeImages/changeUserName.png)
+
+![changeUserName2](/readmeImages/changeUserName2.png)
