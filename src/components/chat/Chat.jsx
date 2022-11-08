@@ -6,12 +6,12 @@ import { io } from 'socket.io-client';
 // ==================== Matrerial UI ==================== //
 import { Box, Stack, styled, Paper, Button } from '@mui/material';
 
-const socket = io('http://localhost:3000');
+const socket = io(`${import.meta.env.VITE_API_BASE_URL}`);
 
 export const Chat = () => {
 
     const [newMessage, setNewMessage] = useState('');
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([]);
     const { user } = useContext(UserContext);
 
 

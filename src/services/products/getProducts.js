@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const getProducts = async(categorie = '', page= '', sort = '') => {
-    console.log(import.meta.env.VITE_API_BASE_URL)
     try {
         const { data } = await axios.get(
             `${import.meta.env.VITE_API_BASE_URL}/products/${categorie}?page=${page}&sort=${sort}`
