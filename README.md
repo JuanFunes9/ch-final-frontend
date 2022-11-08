@@ -1,4 +1,4 @@
-## Front-end React para E-commerce
+# Front-end React para E-commerce
 
 ### Configuración básica y comandos
 1. Descargar el repositorio a un etorno local
@@ -7,9 +7,11 @@
 npm install
 ~~~
 
-3. Asegurarse de haber descargado, configurado e iniciado el servidor backend local, en el puerto 3000: https://github.com/JuanFunes9/ch-final-frontend
+3. Asegurarse de haber descargado, configurado e iniciado el servidor backend local, en el puerto 3000: https://github.com/JuanFunes9/ch-final-backend
 
 4. Levantar el servidor front-end de desarrollo con el siguiente comando:
 ~~~
 npm run dev
 ~~~
+
+### Configuración básica y comandos
