@@ -31,6 +31,7 @@ const App = () => {
         <>
             <NavBar />
             <Routes>
+            <Route path='/' element={<Navigate to='/products' />} />
                 <Route element={<OnlyIfNotUser />}>
                     <Route path='/auth/login' element={<Login />} />
                     <Route path='/auth/register' element={<Register />} />
