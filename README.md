@@ -56,3 +56,15 @@ npm run dev
 ![changeUserName](/readmeImages/changeUserName.png)
 
 ![changeUserName2](/readmeImages/changeUserName2.png)
+
+### Acceso al chat global para usuarios:
+![chat](/readmeImages/chat.png)
+
+## Funcionalidades de Usuario administrador
+![adminView](/readmeImages/adminView.png)
+
+### Formulario de carga de producto:
+![newProd1](/readmeImages/newProd1.png)
+
+![newProd2](/readmeImages/newProd2.png)
+
