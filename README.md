@@ -45,3 +45,10 @@ npm run dev
 
 *El usuario puede acceder al historial de sus compras desde su perfil, en el apartado de "HISTORIAL":*
 ![ordersHistorial](/readmeImages/ordersHistorial.png)
+
+### Modificación del perfil de usuario:
+![changeUserPhoto1](/readmeImages/changeUserPhoto1.png)
+
+![changeUserPhoto2](/readmeImages/changeUserPhoto2.png)
+
+![changeUserPhoto3](/readmeImages/changeUserPhoto3.png)
