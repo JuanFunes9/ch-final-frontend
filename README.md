@@ -1,6 +1,6 @@
 # Front-end React para E-commerce
 
-### Configuración básica y comandos
+## Configuración básica y comandos
 1. Descargar el repositorio a un etorno local
 2. Instalar los paquetes con el comando:
 ~~~
@@ -14,4 +14,9 @@ npm install
 npm run dev
 ~~~
 
-### Configuración básica y comandos
+## Funcionalidades de Usuario no administrador
+
+### Login y registro de usuarios
+
+1. Registro de usuarios:
+![registerView](/readmeImages/registerView.png)
