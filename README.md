@@ -68,3 +68,6 @@ npm run dev
 
 ![newProd2](/readmeImages/newProd2.png)
 
+### Botones para editar o borrar productos:
+![CRUDproducts](/readmeImages/CRUDproduct.png)
+
