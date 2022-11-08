@@ -26,12 +26,12 @@ npm run dev
 2. Login de usuarios:
 ![loginView](/readmeImages/loginView.png)
 
-3. Vista del listado de productos, filtros, paginación, y vista para cada producto:
+### Vista del listado de productos, filtros, paginación, y vista para cada producto:
 ![allProductsVire](/readmeImages/allProductsView.png)
 
 ![productView](/readmeImages/productView.png)
 
-3. Proceso de agregar producto al carrito, enviar pedido y visualizar historial de compras:
+### Proceso de agregar producto al carrito, enviar pedido y visualizar historial de compras:
 ![addToCartView](/readmeImages/addToCartView.png)
 *Una vez agregamos todos los productos que necesitemos, podemos visualizarlos en la vista del carrito*
 
