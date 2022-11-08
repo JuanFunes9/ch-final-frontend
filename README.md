@@ -20,3 +20,8 @@ npm run dev
 
 1. Registro de usuarios:
 ![registerView](/readmeImages/registerView.png)
+
+***Nota:*** *Por cada registro de usuario, se le enviara un email al ADMIN_EMAIL informando del registro más los datos del nuevo usuario.*
+
+1. Login de usuarios:
+![loginView](/readmeImages/loginView.png)
