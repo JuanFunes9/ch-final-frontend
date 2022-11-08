@@ -102,7 +102,7 @@ export default function TemporaryDrawer() {
           </a>
         </ListItem>
         <ListItem >
-          <a href='https://juan-funes.vercel.app/' target="_blank">
+          <a href='https://github.com/JuanFunes9/ch-final-frontend/' target="_blank">
             <ListItemButton >
               <ListItemIcon >
                 <GitHubIcon />
@@ -135,7 +135,7 @@ export default function TemporaryDrawer() {
     >
       <List>
         {userItems.map(item => (
-          <ListItem key={item.name} disablePadding>
+          <ListItem key={item.name} >
             <Link to={item.route} >
               <ListItemButton >
                 <ListItemIcon >
@@ -156,6 +156,26 @@ export default function TemporaryDrawer() {
               <ListItemText primary={'Sobre Nosotros'} />
             </ListItemButton>
           </Link>
+        </ListItem>
+        <ListItem >
+          <a href='https://github.com/JuanFunes9/ch-final-frontend/' target="_blank">
+            <ListItemButton >
+              <ListItemIcon >
+                <GitHubIcon />
+              </ListItemIcon>
+              <ListItemText primary={'GitHub (Front-end)'} />
+            </ListItemButton>
+          </a>
+        </ListItem>
+        <ListItem >
+          <a href='https://github.com/JuanFunes9/ch-final-backend' target="_blank">
+            <ListItemButton >
+              <ListItemIcon >
+                <GitHubIcon />
+              </ListItemIcon>
+              <ListItemText primary={'GitHub (Back-end)'} />
+            </ListItemButton>
+          </a>
         </ListItem>
       </List>
       <Divider />
