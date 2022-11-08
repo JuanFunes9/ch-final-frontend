@@ -39,15 +39,26 @@ const Register = () => {
 
     //Funcion para manejar el envio del formulario de registro:
     const hanldeSendForm = async () => {
-        //Validar que las passwords coincidan. Desplegar alert si no lo hacen:
+        //Validar que las passwords coincidan y que todos los campos hayan sido completados. Desplegar alert si no lo hacen:
+        if (
+            !credentials.firstName ||
+            !credentials.lastName ||
+            !credentials.email ||
+            !credentials.password ||
+            !credentials.phone ||
+            !credentials.address
+            ) {
+            return setInvalid({ show: true, msg: 'Complete todos los campos!' })
+        }
+
         if (credentials.password !== repPassword) {
-            setInvalid({ show: true, msg: 'Las passwords no coinciden!' })
+            return setInvalid({ show: true, msg: 'Las passwords no coinciden!' })
         }
 
         //Enviar la peticion el endpoint de Register y validar que no haya errores:
         const user = await register(credentials)
         if (!user) {
-            setInvalid({ show: true, msg: 'No ha ingresado credenciales validas!' })
+            return setInvalid({ show: true, msg: 'Algo ha salido mal! Revise sus datos y asegurese de que el email no este registrado' })
         }
 
         setToken(user.token);
