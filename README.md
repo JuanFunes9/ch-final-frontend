@@ -22,6 +22,7 @@ npm run dev
 ![registerView](/readmeImages/registerView.png)
 
 ***Nota:*** *Por cada registro de usuario, se le enviara un email al ADMIN_EMAIL informando del registro más los datos del nuevo usuario.*
+![registerEmail](/readmeImages/registerEmail.png)
 
 2. Login de usuarios:
 ![loginView](/readmeImages/loginView.png)
@@ -36,3 +37,11 @@ npm run dev
 *Una vez agregamos todos los productos que necesitemos, podemos visualizarlos en la vista del carrito*
 
 ![cartView](/readmeImages/cartView.png)
+
+![buySuccess](/readmeImages/buySuccess.png)
+
+*Ejemplo del email que recibe el administrador cuando el usuario envia un pedido:*
+![newOrderEmail](/readmeImages/newOrderEmail.png)
+
+*El usuario puede acceder al historial de sus compras desde su perfil, en el apartado de "HISTORIAL":*
+![ordersHistorial](/readmeImages/ordersHistorial.png)
